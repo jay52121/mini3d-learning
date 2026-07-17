@@ -8,6 +8,7 @@
   touch-action: none;
   user-select: none;
   -webkit-user-select: none;
+  -webkit-tap-highlight-color: transparent;
 }
 
 html, body {
@@ -34,10 +35,8 @@ canvas { display: block; }
   pointer-events: none;
 }
 
-.topButton {
-  position: fixed;
-  z-index: 30;
-  top: 16px;
+.topButton,
+.sensorButton {
   height: 42px;
   min-width: 84px;
   border: 2px solid rgba(255,255,255,.82);
@@ -47,8 +46,37 @@ canvas { display: block; }
   font-weight: bold;
 }
 
+.topButton {
+  position: fixed;
+  z-index: 30;
+  top: 16px;
+}
+
 #cameraButton { right: 108px; }
 #resetButton { right: 16px; }
+
+/*
+  感应按钮放在视角和复位按钮下面，
+  避免 iPad 横屏时和左侧状态栏挤在一起。
+*/
+#tiltControls {
+  position: fixed;
+  z-index: 31;
+  top: 66px;
+  right: 16px;
+  display: flex;
+  gap: 8px;
+}
+
+.sensorButton {
+  min-width: 92px;
+  background: rgba(37,74,82,.80);
+}
+
+/* hidden 属性应该始终真正隐藏按钮。 */
+[hidden] {
+  display: none !important;
+}
 
 #moveZone {
   position: fixed;
@@ -121,3 +149,20 @@ canvas { display: block; }
 }
 
 button:active { transform: scale(.94); }
+
+@media (max-width: 700px) {
+  #hud {
+    font-size: 13px;
+  }
+
+  .topButton,
+  .sensorButton {
+    min-width: 76px;
+    height: 38px;
+    font-size: 12px;
+  }
+
+  #cameraButton { right: 96px; }
+  #tiltControls { top: 60px; }
+  #tip { font-size: 11px; }
+}
