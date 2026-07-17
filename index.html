@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no" />
-  <title>Mini3D Learning v0.1</title>
+  <title>Mini3D Learning v0.2</title>
   <link rel="stylesheet" href="./css/style.css" />
   <script type="importmap">
   {
@@ -15,15 +15,25 @@
 </head>
 <body>
   <div id="hud">
-    <b>Mini3D 学习版 v0.1</b><br>
+    <b>Mini3D 学习版 v0.2</b><br>
     视角：<span id="cameraModeText">第三人称</span><br>
-    状态：<span id="stateText">准备中</span>
+    状态：<span id="stateText">准备中</span><br>
+    感应：<span id="tiltStatusText">关闭</span>
   </div>
 
   <button id="cameraButton" class="topButton">切换视角</button>
   <button id="resetButton" class="topButton">复位</button>
 
-  <!-- 左半屏动态摇杆 -->
+  <!--
+    重力感应必须由玩家亲自点击开启。
+    这是 iPad Safari 的隐私保护要求。
+  -->
+  <div id="tiltControls">
+    <button id="tiltButton" class="sensorButton">开启感应</button>
+    <button id="tiltOffButton" class="sensorButton" hidden>关闭感应</button>
+  </div>
+
+  <!-- 左半屏动态摇杆：开启重力感应后仍可临时接管移动。 -->
   <div id="moveZone">
     <div id="joystickBase">
       <div id="joystickKnob"></div>
@@ -35,7 +45,7 @@
 
   <button id="jumpButton">跳</button>
 
-  <div id="tip">左侧滑动移动 · 右侧滑动转镜头 · 按“跳”起跳</div>
+  <div id="tip">左侧滑动或倾斜移动 · 右侧滑动转镜头 · 按“跳”起跳</div>
 
   <script type="module" src="./js/main.js"></script>
 </body>
