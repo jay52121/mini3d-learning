@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no" />
+  <title>Mini3D Learning v0.1</title>
+  <link rel="stylesheet" href="./css/style.css" />
+  <script type="importmap">
+  {
+    "imports": {
+      "three": "https://cdn.jsdelivr.net/npm/three@0.180.0/build/three.module.js"
+    }
+  }
+  </script>
+</head>
+<body>
+  <div id="hud">
+    <b>Mini3D 学习版 v0.1</b><br>
+    视角：<span id="cameraModeText">第三人称</span><br>
+    状态：<span id="stateText">准备中</span>
+  </div>
+
+  <button id="cameraButton" class="topButton">切换视角</button>
+  <button id="resetButton" class="topButton">复位</button>
+
+  <!-- 左半屏动态摇杆 -->
+  <div id="moveZone">
+    <div id="joystickBase">
+      <div id="joystickKnob"></div>
+    </div>
+  </div>
+
+  <!-- 右半屏滑动控制镜头 -->
+  <div id="lookZone"></div>
+
+  <button id="jumpButton">跳</button>
+
+  <div id="tip">左侧滑动移动 · 右侧滑动转镜头 · 按“跳”起跳</div>
+
+  <script type="module" src="./js/main.js"></script>
+</body>
+</html>
